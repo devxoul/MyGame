@@ -55,7 +55,7 @@ class GameScene: SKScene {
     }
 
     override func update(currentTime: NSTimeInterval) {
-        self.hero.zRotation = self.attackJoystick.angle - CGFloat(M_PI_2)
+        self.hero.rotation = self.attackJoystick.angle
         self.hero.position.x += self.hero.velocity * self.moveJoystick.dx
         self.hero.position.y += self.hero.velocity * self.moveJoystick.dy
         self.cam.position.x += 0.1 * (self.hero.position.x - self.cam.position.x)
@@ -68,10 +68,9 @@ class GameScene: SKScene {
         for (i, enemy) in self.enemies.enumerate() {
             let dy = self.hero.position.y - enemy.position.y
             let dx = self.hero.position.x - enemy.position.x
-            let angle = atan2(dy, dx)
-            enemy.zRotation = angle - CGFloat(M_PI_2)
-            enemy.position.x += enemy.velocity * cos(angle)
-            enemy.position.y += enemy.velocity * sin(angle)
+            enemy.rotation = atan2(dy, dx)
+            enemy.position.x += enemy.velocity * cos(enemy.rotation)
+            enemy.position.y += enemy.velocity * sin(enemy.rotation)
 
             if distance(self.hero, enemy) <= 10 {
                 enemy.removeFromParent()
@@ -84,9 +83,8 @@ class GameScene: SKScene {
         }
 
         for (i, bullet) in self.bullets.enumerate() {
-            let angle = bullet.zRotation + CGFloat(M_PI_2)
-            bullet.position.x += bullet.velocity * cos(angle)
-            bullet.position.y += bullet.velocity * sin(angle)
+            bullet.position.x += bullet.velocity * cos(bullet.rotation)
+            bullet.position.y += bullet.velocity * sin(bullet.rotation)
 
             if distance(bullet.origin, bullet.position) > bullet.range {
                 bullet.removeFromParent()
@@ -97,7 +95,7 @@ class GameScene: SKScene {
 
     func shoot(currentTime: NSTimeInterval) {
         let bullet = Bullet(origin: self.hero.position)
-        bullet.zRotation = self.hero.zRotation
+        bullet.rotation = self.hero.rotation
         self.addChild(bullet)
         self.bullets.append(bullet)
         self.lastShootTime = currentTime

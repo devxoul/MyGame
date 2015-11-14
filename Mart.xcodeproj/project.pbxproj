@@ -21,6 +21,7 @@
 		03BAAC101BF7C7C700107684 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC0F1BF7C7C700107684 /* Distance.swift */; };
 		03BAAC121BF7C90500107684 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC111BF7C90500107684 /* Random.swift */; };
 		03BAAC2E1BF7D0FE00107684 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC2D1BF7D0FE00107684 /* Bullet.swift */; };
+		03BAAC301BF7D5FD00107684 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC2F1BF7D5FD00107684 /* Entity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		03BAAC0F1BF7C7C700107684 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		03BAAC111BF7C90500107684 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		03BAAC2D1BF7D0FE00107684 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		03BAAC2F1BF7D5FD00107684 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		03BAAC0A1BF7B5F200107684 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				03BAAC2F1BF7D5FD00107684 /* Entity.swift */,
 				03BAAC0B1BF7B5F900107684 /* Hero.swift */,
 				03BAAC0D1BF7BF9400107684 /* Enemy.swift */,
 				03BAAC2D1BF7D0FE00107684 /* Bullet.swift */,
@@ -186,6 +189,7 @@
 				03BAAC101BF7C7C700107684 /* Distance.swift in Sources */,
 				03BAAC091BF7B24600107684 /* Then.swift in Sources */,
 				03BAABF01BF79E8700107684 /* AppDelegate.swift in Sources */,
+				03BAAC301BF7D5FD00107684 /* Entity.swift in Sources */,
 				03BAAC2E1BF7D0FE00107684 /* Bullet.swift in Sources */,
 				03BAAC0C1BF7B5F900107684 /* Hero.swift in Sources */,
 				03BAAC121BF7C90500107684 /* Random.swift in Sources */,
