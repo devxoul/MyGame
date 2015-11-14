@@ -9,37 +9,39 @@
 import SpriteKit
 
 class GameScene: SKScene {
+
+    let cam = SKCameraNode()
+    let interfaceLayer = SKNode()
+    let joystick = Joystick().then {
+        $0.position.x = 100
+        $0.position.y = 100
+    }
+
+    let hero = Hero()
+
+
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 45;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
+        self.hero.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+
+        // camera
+        self.camera = self.cam
+        self.addChild(self.cam)
+
+        // interface
+        self.cam.addChild(self.interfaceLayer)
+        self.interfaceLayer.position = CGPoint(x: -self.size.width / 2, y: -self.size.height / 2)
+        self.interfaceLayer.addChild(self.joystick)
+
+        // game
+        self.addChild(self.hero)
     }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+
+    override func update(currentTime: NSTimeInterval) {
+        self.hero.zRotation = self.joystick.angle
+        self.hero.position.x += self.hero.velocity * self.joystick.x
+        self.hero.position.y += self.hero.velocity * self.joystick.y
+        self.cam.position.x += 0.1 * (self.hero.position.x - self.cam.position.x)
+        self.cam.position.y += 0.1 * (self.hero.position.y - self.cam.position.y)
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
-    }
+
 }
