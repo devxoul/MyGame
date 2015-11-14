@@ -22,8 +22,8 @@ class GameScene: SKScene {
     }
 
     let hero = Hero()
-    var enemies = [Enemy]()
-    var bullets = [Bullet]()
+    var enemies = Set<Enemy>()
+    var bullets = Set<Bullet>()
 
     var enemySpawner: NSTimer?
     var lastShootTime: NSTimeInterval = 0
@@ -65,7 +65,7 @@ class GameScene: SKScene {
             self.spawnEnemy()
         }
 
-        for (i, enemy) in self.enemies.enumerate() {
+        for enemy in self.enemies {
             let dy = self.hero.position.y - enemy.position.y
             let dx = self.hero.position.x - enemy.position.x
             enemy.rotation = atan2(dy, dx)
@@ -74,7 +74,7 @@ class GameScene: SKScene {
 
             if distance(self.hero, enemy) <= 10 {
                 enemy.removeFromParent()
-                self.enemies.removeAtIndex(i)
+                self.enemies.remove(enemy)
             }
         }
 
@@ -82,7 +82,7 @@ class GameScene: SKScene {
             self.shoot(currentTime)
         }
 
-        for (i, bullet) in self.bullets.enumerate() {
+        for bullet in self.bullets {
             bullet.position.x += bullet.velocity * cos(bullet.rotation)
             bullet.position.y += bullet.velocity * sin(bullet.rotation)
 
@@ -91,13 +91,13 @@ class GameScene: SKScene {
                 enemy.hp -= bullet.damage
                 if enemy.hp <= 0 {
                     enemy.removeFromParent()
-                    self.enemies.removeAtIndex(i)
+                    self.enemies.remove(enemy)
                 }
             }
 
             if hitEnemy != nil || distance(bullet.origin, bullet.position) > bullet.range {
                 bullet.removeFromParent()
-                self.bullets.removeAtIndex(i)
+                self.bullets.remove(bullet)
             }
         }
     }
@@ -106,14 +106,14 @@ class GameScene: SKScene {
         let bullet = Bullet(origin: self.hero.position)
         bullet.rotation = self.hero.rotation
         self.addChild(bullet)
-        self.bullets.append(bullet)
+        self.bullets.insert(bullet)
         self.lastShootTime = currentTime
     }
 
     dynamic func spawnEnemy() {
         let enemy = Enemy()
         self.addChild(enemy)
-        self.enemies.append(enemy)
+        self.enemies.insert(enemy)
 
         let angle = randomf()
         let distance: CGFloat = 400
