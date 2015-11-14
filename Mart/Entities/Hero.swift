@@ -12,6 +12,9 @@ class Hero: SKSpriteNode {
 
     var velocity: CGFloat = 3
 
+    /// number of bullets available per seconds
+    var shootRate: Double = 10
+
     convenience init() {
         self.init(imageNamed: "Spaceship")
         self.size = CGSize(width: 40, height: 40)

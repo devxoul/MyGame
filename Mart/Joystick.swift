@@ -22,6 +22,8 @@ class Joystick: SKNode {
     var dy: CGFloat {
         return self.value * sin(self.angle)
     }
+
+    private(set) var pressed = false
     
 
     override init() {
@@ -39,6 +41,10 @@ class Joystick: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.pressed = true
+    }
+
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let touch = touches.first else {
             return
@@ -54,6 +60,11 @@ class Joystick: SKNode {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.button.position = .zero
         self.value = 0
+        self.pressed = false
+    }
+
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        self.pressed = false
     }
 
 }

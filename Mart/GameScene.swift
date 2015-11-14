@@ -23,8 +23,10 @@ class GameScene: SKScene {
 
     let hero = Hero()
     var enemies = [Enemy]()
+    var bullets = [Bullet]()
 
     var enemySpawner: NSTimer?
+    var lastShootTime: NSTimeInterval = 0
 
 
     override func didMoveToView(view: SKView) {
@@ -76,6 +78,29 @@ class GameScene: SKScene {
                 self.enemies.removeAtIndex(i)
             }
         }
+
+        if self.attackJoystick.pressed && currentTime > self.lastShootTime + 1 / self.hero.shootRate {
+            self.shoot(currentTime)
+        }
+
+        for (i, bullet) in self.bullets.enumerate() {
+            let angle = bullet.zRotation + CGFloat(M_PI_2)
+            bullet.position.x += bullet.velocity * cos(angle)
+            bullet.position.y += bullet.velocity * sin(angle)
+
+            if distance(bullet.origin, bullet.position) > bullet.range {
+                bullet.removeFromParent()
+                self.bullets.removeAtIndex(i)
+            }
+        }
+    }
+
+    func shoot(currentTime: NSTimeInterval) {
+        let bullet = Bullet(origin: self.hero.position)
+        bullet.zRotation = self.hero.zRotation
+        self.addChild(bullet)
+        self.bullets.append(bullet)
+        self.lastShootTime = currentTime
     }
 
     dynamic func spawnEnemy() {
