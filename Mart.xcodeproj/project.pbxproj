@@ -16,6 +16,7 @@
 		03BAABFE1BF79E8700107684 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03BAABFC1BF79E8700107684 /* LaunchScreen.storyboard */; };
 		03BAAC061BF7A2A200107684 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC051BF7A2A200107684 /* Joystick.swift */; };
 		03BAAC091BF7B24600107684 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC081BF7B24600107684 /* Then.swift */; };
+		03BAAC0C1BF7B5F900107684 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC0B1BF7B5F900107684 /* Hero.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		03BAABFF1BF79E8700107684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03BAAC051BF7A2A200107684 /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		03BAAC081BF7B24600107684 /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		03BAAC0B1BF7B5F900107684 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,8 @@
 				03BAABF31BF79E8700107684 /* GameScene.swift */,
 				03BAAC051BF7A2A200107684 /* Joystick.swift */,
 				03BAABF51BF79E8700107684 /* GameViewController.swift */,
+				03BAAC0A1BF7B5F200107684 /* Entities */,
+				03BAAC071BF7B24600107684 /* Utils */,
 				03BAABF71BF79E8700107684 /* Main.storyboard */,
 				03BAABFA1BF79E8700107684 /* Assets.xcassets */,
 				03BAABFC1BF79E8700107684 /* LaunchScreen.storyboard */,
@@ -81,6 +85,14 @@
 				03BAAC081BF7B24600107684 /* Then.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		03BAAC0A1BF7B5F200107684 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				03BAAC0B1BF7B5F900107684 /* Hero.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +172,7 @@
 				03BAABF61BF79E8700107684 /* GameViewController.swift in Sources */,
 				03BAAC091BF7B24600107684 /* Then.swift in Sources */,
 				03BAABF01BF79E8700107684 /* AppDelegate.swift in Sources */,
+				03BAAC0C1BF7B5F900107684 /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
