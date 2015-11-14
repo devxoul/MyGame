@@ -86,7 +86,16 @@ class GameScene: SKScene {
             bullet.position.x += bullet.velocity * cos(bullet.rotation)
             bullet.position.y += bullet.velocity * sin(bullet.rotation)
 
-            if distance(bullet.origin, bullet.position) > bullet.range {
+            let hitEnemy = self.enemyHitByBullet(bullet)
+            if let enemy = hitEnemy {
+                enemy.hp -= bullet.damage
+                if enemy.hp <= 0 {
+                    enemy.removeFromParent()
+                    self.enemies.removeAtIndex(i)
+                }
+            }
+
+            if hitEnemy != nil || distance(bullet.origin, bullet.position) > bullet.range {
                 bullet.removeFromParent()
                 self.bullets.removeAtIndex(i)
             }
@@ -110,6 +119,15 @@ class GameScene: SKScene {
         let distance: CGFloat = 400
         enemy.position.x = self.hero.position.x + distance * cos(angle)
         enemy.position.y = self.hero.position.y + distance * sin(angle)
+    }
+
+    func enemyHitByBullet(bullet: Bullet) -> Enemy? {
+        for enemy in self.enemies {
+            if CGRectIntersectsRect(bullet.frame, enemy.frame) {
+                return enemy
+            }
+        }
+        return nil
     }
 
 }

@@ -13,6 +13,7 @@ class Bullet: SKShapeNode {
     let origin: CGPoint
     var velocity: CGFloat = 10
     var range: CGFloat = 500
+    var damage: Int = 10
 
     init(origin: CGPoint) {
         self.origin = origin

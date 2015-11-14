@@ -10,6 +10,7 @@ import SpriteKit
 
 class Enemy: SKSpriteNode {
 
+    var hp: Int = 100
     var velocity: CGFloat = 1
 
     convenience init() {
