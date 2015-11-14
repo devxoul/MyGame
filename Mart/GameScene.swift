@@ -93,6 +93,15 @@ class GameScene: SKScene {
                     enemy.removeFromParent()
                     self.enemies.remove(enemy)
                 }
+
+                guard let spark = SKEmitterNode(fileNamed: "Spark") else {
+                    return
+                }
+                spark.position = bullet.position
+                spark.alpha = 0.5
+                spark.zPosition = 100
+                spark.runAction(SKAction.sequence([.fadeAlphaTo(0, duration: 0.3), .removeFromParent()]))
+                self.addChild(spark)
             }
 
             if hitEnemy != nil || distance(bullet.origin, bullet.position) > bullet.range {
@@ -115,7 +124,7 @@ class GameScene: SKScene {
         self.addChild(enemy)
         self.enemies.insert(enemy)
 
-        let angle = randomf()
+        let angle = randomf() * 2 * CGFloat(M_PI)
         let distance: CGFloat = 400
         enemy.position.x = self.hero.position.x + distance * cos(angle)
         enemy.position.y = self.hero.position.y + distance * sin(angle)
