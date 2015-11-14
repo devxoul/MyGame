@@ -18,6 +18,7 @@
 		03BAAC091BF7B24600107684 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC081BF7B24600107684 /* Then.swift */; };
 		03BAAC0C1BF7B5F900107684 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC0B1BF7B5F900107684 /* Hero.swift */; };
 		03BAAC101BF7C7C700107684 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC0F1BF7C7C700107684 /* Distance.swift */; };
+		03BAAC121BF7C90500107684 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC111BF7C90500107684 /* Random.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		03BAAC081BF7B24600107684 /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		03BAAC0B1BF7B5F900107684 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		03BAAC0F1BF7C7C700107684 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		03BAAC111BF7C90500107684 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				03BAAC0F1BF7C7C700107684 /* Distance.swift */,
+				03BAAC111BF7C90500107684 /* Random.swift */,
 				03BAAC081BF7B24600107684 /* Then.swift */,
 			);
 			path = Utils;
@@ -177,6 +180,7 @@
 				03BAAC091BF7B24600107684 /* Then.swift in Sources */,
 				03BAABF01BF79E8700107684 /* AppDelegate.swift in Sources */,
 				03BAAC0C1BF7B5F900107684 /* Hero.swift in Sources */,
+				03BAAC121BF7C90500107684 /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
