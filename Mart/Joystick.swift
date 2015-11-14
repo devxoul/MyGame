@@ -13,13 +13,13 @@ class Joystick: SKNode {
     let background = SKShapeNode(circleOfRadius: 70)
     let button = SKShapeNode(circleOfRadius: 30)
 
-    private(set) var angle: CGFloat = 0
-    private(set) var value: CGFloat = 0
+    private(set) var angle = CGFloat(M_PI_2)
+    private(set) var value = CGFloat(0)
 
-    var x: CGFloat {
+    var dx: CGFloat {
         return self.value * cos(self.angle)
     }
-    var y: CGFloat {
+    var dy: CGFloat {
         return self.value * sin(self.angle)
     }
     
@@ -45,10 +45,10 @@ class Joystick: SKNode {
         }
         self.button.position = touch.locationInNode(self)
 
-        let buttonDistance = sqrt(pow(self.button.position.x, 2) + pow(self.button.position.y, 2))
+        let buttonDistance = distance(self.button.position, .zero)
         let totalDistance = (self.background.frame.width - self.button.frame.width) / 2
         self.value = min(1, buttonDistance / totalDistance)
-        self.angle = atan2(self.button.position.y, self.button.position.x) - CGFloat(M_PI_2)
+        self.angle = atan2(self.button.position.y, self.button.position.x)
     }
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
