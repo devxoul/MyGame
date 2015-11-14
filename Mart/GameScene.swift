@@ -66,9 +66,11 @@ class GameScene: SKScene {
         }
 
         for enemy in self.enemies {
-            let dy = self.hero.position.y - enemy.position.y
-            let dx = self.hero.position.x - enemy.position.x
-            enemy.rotation = atan2(dy, dx)
+            if enemy.hp > 0 {
+                let dy = self.hero.position.y - enemy.position.y
+                let dx = self.hero.position.x - enemy.position.x
+                enemy.rotation = atan2(dy, dx)
+            }
 
             var velocity = enemy.velocity
             if enemy.hp <= 0 {
@@ -77,9 +79,18 @@ class GameScene: SKScene {
             enemy.position.x += velocity * cos(enemy.rotation)
             enemy.position.y += velocity * sin(enemy.rotation)
 
-            if distance(self.hero, enemy) <= 10 {
-                enemy.removeFromParent()
-                self.enemies.remove(enemy)
+            if distance(self.hero, enemy) <= 30 {
+                enemy.hp = 0
+                guard let explosion = SKEmitterNode(fileNamed: "Explosion") else {
+                    return
+                }
+                explosion.position = enemy.position
+                explosion.zPosition = 110
+                explosion.runAction(SKAction.sequence([.fadeAlphaTo(0, duration: 0.5), .removeFromParent()]))
+                enemy.runAction(SKAction.sequence([.fadeAlphaTo(0, duration: 0.3), .removeFromParent()])) {
+                    self.enemies.remove(enemy)
+                }
+                self.addChild(explosion)
             }
         }
 
