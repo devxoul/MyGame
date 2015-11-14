@@ -69,8 +69,13 @@ class GameScene: SKScene {
             let dy = self.hero.position.y - enemy.position.y
             let dx = self.hero.position.x - enemy.position.x
             enemy.rotation = atan2(dy, dx)
-            enemy.position.x += enemy.velocity * cos(enemy.rotation)
-            enemy.position.y += enemy.velocity * sin(enemy.rotation)
+
+            var velocity = enemy.velocity
+            if enemy.hp <= 0 {
+                velocity /= 2
+            }
+            enemy.position.x += velocity * cos(enemy.rotation)
+            enemy.position.y += velocity * sin(enemy.rotation)
 
             if distance(self.hero, enemy) <= 10 {
                 enemy.removeFromParent()
@@ -90,15 +95,22 @@ class GameScene: SKScene {
             if let enemy = hitEnemy {
                 enemy.hp -= bullet.damage
                 if enemy.hp <= 0 {
-                    enemy.removeFromParent()
-                    self.enemies.remove(enemy)
+                    guard let explosion = SKEmitterNode(fileNamed: "Explosion") else {
+                        return
+                    }
+                    explosion.position = enemy.position
+                    explosion.zPosition = 110
+                    explosion.runAction(SKAction.sequence([.fadeAlphaTo(0, duration: 0.5), .removeFromParent()]))
+                    enemy.runAction(SKAction.sequence([.fadeAlphaTo(0, duration: 0.3), .removeFromParent()])) {
+                        self.enemies.remove(enemy)
+                    }
+                    self.addChild(explosion)
                 }
 
                 guard let spark = SKEmitterNode(fileNamed: "Spark") else {
                     return
                 }
                 spark.position = bullet.position
-                spark.alpha = 0.5
                 spark.zPosition = 100
                 spark.runAction(SKAction.sequence([.fadeAlphaTo(0, duration: 0.3), .removeFromParent()]))
                 self.addChild(spark)
@@ -132,7 +144,7 @@ class GameScene: SKScene {
 
     func enemyHitByBullet(bullet: Bullet) -> Enemy? {
         for enemy in self.enemies {
-            if CGRectIntersectsRect(bullet.frame, enemy.frame) {
+            if enemy.hp > 0 && CGRectIntersectsRect(bullet.frame, enemy.frame) {
                 return enemy
             }
         }

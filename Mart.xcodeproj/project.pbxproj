@@ -22,8 +22,9 @@
 		03BAAC121BF7C90500107684 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC111BF7C90500107684 /* Random.swift */; };
 		03BAAC2E1BF7D0FE00107684 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC2D1BF7D0FE00107684 /* Bullet.swift */; };
 		03BAAC301BF7D5FD00107684 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAAC2F1BF7D5FD00107684 /* Entity.swift */; };
-		03BAAC361BF7DB0D00107684 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03BAAC341BF7DB0D00107684 /* Spark.sks */; };
+		03BAAC361BF7DB0D00107684 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03BAAC341BF7DB0D00107684 /* Explosion.sks */; };
 		03BAAC371BF7DB0D00107684 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 03BAAC351BF7DB0D00107684 /* spark.png */; };
+		03CCBE6E1BF7DFDB006CB0CE /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03CCBE6D1BF7DFDB006CB0CE /* Spark.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +45,9 @@
 		03BAAC111BF7C90500107684 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		03BAAC2D1BF7D0FE00107684 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		03BAAC2F1BF7D5FD00107684 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		03BAAC341BF7DB0D00107684 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
+		03BAAC341BF7DB0D00107684 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		03BAAC351BF7DB0D00107684 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		03CCBE6D1BF7DFDB006CB0CE /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +128,9 @@
 		03BAAC331BF7DAFC00107684 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				03BAAC341BF7DB0D00107684 /* Spark.sks */,
+				03CCBE6D1BF7DFDB006CB0CE /* Spark.sks */,
 				03BAAC351BF7DB0D00107684 /* spark.png */,
+				03BAAC341BF7DB0D00107684 /* Explosion.sks */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -192,9 +195,10 @@
 			files = (
 				03BAABF21BF79E8700107684 /* GameScene.sks in Resources */,
 				03BAAC371BF7DB0D00107684 /* spark.png in Resources */,
-				03BAAC361BF7DB0D00107684 /* Spark.sks in Resources */,
+				03BAAC361BF7DB0D00107684 /* Explosion.sks in Resources */,
 				03BAABFE1BF79E8700107684 /* LaunchScreen.storyboard in Resources */,
 				03BAABFB1BF79E8700107684 /* Assets.xcassets in Resources */,
+				03CCBE6E1BF7DFDB006CB0CE /* Spark.sks in Resources */,
 				03BAABF91BF79E8700107684 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
